@@ -1,0 +1,36 @@
+#about_dlg_container {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#aboutIcon {
+    vertical-align: top;
+}
+
+#about_dlg_container > div > span {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+#foursquare {
+    background-image: url(../resources/foursquare-32.png) !important;
+}
+
+#dropbox {
+    background-image: url(../resources/dropbox-32.png) !important;
+}
+
+#eclipse {
+    background-image: url(../resources/eclipse-32.png) !important;
+}
+
+#googlemaps {
+    background-image: url(../resources/googlemaps-32.png) !important;
+}
+
+#icons {
+    border-top: 1px solid black;
+    margin-top: 10px;
+    padding: 5px;
+}

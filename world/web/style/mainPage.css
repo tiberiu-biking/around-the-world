@@ -1,0 +1,39 @@
+@CHARSET "ISO-8859-1";
+
+.pane-north {
+    padding: 3px !important;
+    border: 0px !important;
+}
+
+.map {
+    height: 100%;
+    color: black;
+    width: 100%;
+}
+
+.map img {
+    max-width: none !important;
+}
+
+.form-actions {
+    padding: 10px 0px;
+    background-color: white;
+}
+
+.homeRoute {
+    height: 100%;
+}
+
+#placeholderDiv {
+    height: 100%;
+}
+
+#pac-input {
+    top: 21px !important;
+}
+
+.homeErrorContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 463px;
+}

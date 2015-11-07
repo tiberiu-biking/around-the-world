@@ -1,0 +1,174 @@
+@charset 'UTF-8';
+/* Base Styles */
+
+#cssmenu,
+#cssmenu ul,
+#cssmenu li,
+#cssmenu a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    font-weight: normal;
+    text-decoration: none;
+    line-height: 1;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    position: relative;
+}
+
+#cssmenu {
+
+    /* border-bottom: 4px solid #34495e;*/
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#cssmenu a {
+    line-height: 1.3;
+}
+
+#cssmenu > ul > li:first-child {
+    background: #34495e;
+    border: 1px solid #34495e;
+    -webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+}
+
+#cssmenu > ul > li:first-child > a {
+    padding: 15px 10px;
+    border: none;
+    border-top: 1px solid #2C3E50;
+    -webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.1em;
+    text-align: center;
+
+    font-weight: 300;
+    text-shadow: 0 -1px 1px #000000;
+}
+
+#cssmenu > ul > li:first-child > a > span {
+    padding: 0;
+}
+
+#cssmenu > ul > li:first-child:hover {
+    background: #2C3E50;
+
+}
+
+#cssmenu > ul > li {
+    background: #1ABC9C;
+}
+
+#cssmenu > ul > li:hover {
+    background: #1ABC9C;
+}
+
+#cssmenu > ul > li > a {
+    line-height: 18px;
+    display: block;
+    /* background: url(../resources/pattern.png) top left repeat; */
+    color: #ffffff;
+    border: 1px solid #ECF0F1;
+    border-top: none;
+    text-shadow: 0 -1px 1px #16A085
+}
+
+#cssmenu > ul > li.has-sub > ul > li > a#connectToFoursquare > span, #cssmenu > ul > li.has-sub > ul > li > a#importFromFoursquare > span {
+    background-repeat: no-repeat;
+    background-image: url(../resources/foursquare-16.png) !important;
+    padding-left: 20px;
+    height: 16px;
+    display: inline-block;
+}
+
+#cssmenu > ul > li.has-sub > ul > li > a#connectToDropbox > span, #cssmenu > ul > li.has-sub > ul > li > a#importFromDropbox > span {
+    background-repeat: no-repeat;
+    background-image: url(../resources/dropbox-16.png) !important;
+    padding-left: 20px;
+    height: 16px;
+    display: inline-block;
+}
+
+#cssmenu > ul > li.has-sub > ul > li > a#currentLocation > span {
+    background-repeat: no-repeat;
+    background-image: url(../resources/add-marker-16.png) !important;
+    padding-left: 20px;
+    height: 16px;
+    display: inline-block;
+}
+
+#cssmenu > ul > li.has-sub > ul > li > a#markerFromPic > span {
+    background-repeat: no-repeat;
+    background-image: url(../resources/picture-16.png) !important;
+    padding-left: 20px;
+    height: 16px;
+    display: inline-block;
+}
+
+#cssmenu > ul > li > a > span {
+    display: block;
+    padding: 12px 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#cssmenu > ul > li > a:hover {
+    text-decoration: none;
+}
+
+#cssmenu > ul > li.active {
+    border-bottom: none;
+}
+
+#cssmenu > ul > li.has-sub > a span {
+    background: url(../resources/icon_plus.png) 96% center no-repeat;
+}
+
+#cssmenu > ul > li.has-sub.active > a span {
+    background: url(../resources/icon_minus.png) 96% center no-repeat;
+}
+
+/* Sub menu */
+#cssmenu ul ul {
+    display: none;
+    background: #ECF0F1;
+}
+
+#cssmenu ul ul li {
+    padding: 0;
+    border-bottom: 1px solid #d4d4d4;
+    border-top: none;
+    background: #ECF0F1;
+}
+
+#cssmenu ul ul li:last-child {
+    border-bottom: none;
+}
+
+#cssmenu ul ul a {
+    padding: 10px 10px 10px 25px;
+    display: block;
+    color: #676767;
+    line-height: 12px;
+    font-weight: normal;
+}
+
+#cssmenu ul ul a:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    color: #1ABC9C;
+}
+
+#cssmenu ul ul a:hover {
+    color: #676767;
+}
+
+

@@ -1,0 +1,42 @@
+<div class="pane-north ui-layout-north">
+    <div class="header"></div>
+</div>
+
+<div class="pane-center ui-layout-center">
+    <input id="pac-input" class="controls" type="text"
+           placeholder="Search Box">
+
+    <div class="map"></div>
+</div>
+<div class="pane-east ui-layout-east">
+    <div id='cssmenu'>
+        <ul>
+            <li><a><span>Menu</span></a></li>
+            <li class='has-sub'><a href='#'><span>Import</span></a>
+                <ul>
+                    <li><a id="currentLocation"><span>Add current
+								location</span></a></li>
+                    <li><a id="markerFromPic"><span>Import from picture</span></a></li>
+                </ul>
+            </li>
+            <li class='has-sub last'><a href='#home' id="external"><span>Connect</span></a>
+                <ul>
+                    <li><a id="connectToFoursquare"><span>Connect with
+								Foursquare</span></a>
+                    <li><a id="importFromFoursquare"><span>Import from
+								Foursquare</span></a>
+                    <li><a id="importFromDropbox"><span>Import from
+								Dropbox</span></a>
+                    <li><a id="connectToDropbox"><span>Connect with
+								Dropbox</span></a>
+                </ul>
+            </li>
+            <li class='has-sub last' id="timelineOption"><a id="timeline"><span>Timeline</span></a>
+                <ul></ul>
+            </li>
+        </ul>
+    </div>
+    <div class="timelineContent"></div>
+</div>
+<div class="homeErrorContainer"></div>
+

@@ -1,0 +1,66 @@
+.navbar-inner {
+    min-height: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background: #34495E;
+    color: #ffffff;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position: relative !important;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+    border-radius: 3px;
+}
+
+.navbar .nav > li > a {
+    color: #ffffff;
+}
+
+.navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    width: 100%;
+}
+
+.navbar-fixed-top {
+    top: 0;
+}
+
+.navbar-fixed-bottom {
+    bottom: 0;
+}
+
+.dropdown-menu {
+    background: #34495E;
+}
+
+.dropdown-menu a {
+    color: #ffffff;
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+    color: #ffffff;
+    background-color: #1ABC9C;
+}
+
+a#logout > span {
+    width: 16px;
+    height: 16px;
+    background-image: url(../resources/logout-16.png) !important;
+    padding-left: 20px;
+    display: inline-block;
+    background-repeat: no-repeat;
+}
+
+a#profileSettings > span {
+    width: 16px;
+    height: 16px;
+    background-image: url(../resources/profile-16.png) !important;
+    padding-left: 20px;
+    display: inline-block;
+    background-repeat: no-repeat;
+}
+
+.navbar .brand {
+    color: #ffffff;
+}

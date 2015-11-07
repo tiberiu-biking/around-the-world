@@ -1,0 +1,1 @@
+ngrok.exe -subdomain=around-the-world 8080

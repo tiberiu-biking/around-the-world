@@ -1,0 +1,80 @@
+<div class="signup-wrapper">
+    <form class="formSignup">
+        <fieldset>
+            <legend>Profile Settings</legend>
+            <br>
+
+            <div class="row">
+                <div class="span6">
+                    <div class="control-group">
+                        <label for="firstName" class="control-label">First name</label>
+
+                        <div class="controls">
+                            <input type="text" id="firstName" name="firstName"
+                                   placeholder="First Name" value="{{firstName}}"> <span class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="lastName" class="control-label">Last name</label>
+
+                        <div class="controls">
+                            <input type="text" id="lastName" name="lastName"
+                                   placeholder="Last Name" value="{{lastName}}"> <span class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="email" class="control-label"> Email
+                            address</label>
+
+                        <div class="controls">
+                            <input type="text" id="email" name="email"
+                                   placeholder="a@a.com" autocomplete="off" value={{email}}> <span
+                                class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="password" class="control-label">New password</label>
+
+                        <div class="controls">
+                            <input type="password" id="password" name="password"
+                                   placeholder="New password" value=''> <span class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="password2" class="control-label">Confirm
+                            password</label>
+
+                        <div class="controls">
+                            <input type="password" id="password2" name="password2"
+                                   placeholder="Confirm password" value=""> <span class="help-inline"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="span3">
+                    <br>
+
+                    <div class="control-group">
+                        <label for="country" class="control-label">Country</label>
+
+                        <div class="controls">
+                            <input type="text" id="country" name="country" value="{{country}}">
+                            <span class="help-inline"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </fieldset>
+        <div class="userErrorContainer"></div>
+        <div class="form-actions">
+            <input id="saveButton" type="button" value="Save"
+                   class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+            <input id="cancelButton" type="button" value="Cancel"
+                   class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,18 @@
+input[type=file] {
+    color: transparent;
+    width: 110px;
+    display: inline-block;
+}
+
+#selectPicContainer {
+    width: 300px;
+    padding: 20px;
+}
+
+#submitFiles {
+    margin-left: auto;
+    margin-right: auto;
+    width: 110px;
+    display: block;
+    top: 10px
+}

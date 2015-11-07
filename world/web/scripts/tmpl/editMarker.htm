@@ -1,0 +1,59 @@
+<div class="signup-wrapper">
+    <form class="formSignup">
+        <fieldset>
+            <legend>Edit Marker</legend>
+            <br>
+
+            <div class="row">
+                <div class="span9">
+                    <div class="control-group">
+                        <label for="firstName" class="control-label">Name</label>
+
+                        <div class="controls">
+                            <input type="text" id="name" name="name" autofocus value="{{name}}"><span
+                                class="help-inline"></span>
+                        </div>
+
+                    </div>
+                    <div class="control-group">
+                        <label for="latitude" class="control-label">Latitude</label>
+
+                        <div class="controls">
+                            <input type="text" id="latitude" name="latitude" value={{latitude}} disabled><span
+                                class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="longitude" class="control-label">Longitude</label>
+
+                        <div class="controls">
+                            <input type="text" id="longitude" name="longitude" value={{longitude}} disabled><span
+                                class="help-inline"></span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="note" class="control-label">Note</label>
+
+                        <div class="controls">
+                            <textarea id="note" name="note" class="span3" rows="3">{{note}}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="span3">
+                    <label for="date" class="control-label">Date</label>
+                    <input class="datepicker" name="date" value={{date}}>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="markerErrorContainer"></div>
+        <div class="form-actions">
+            <input id="saveButton" type="submit" value="Save"
+                   class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+            <input id="cancelButton" type="button" value="Cancel"
+                   class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+        </div>
+
+    </form>
+</div>

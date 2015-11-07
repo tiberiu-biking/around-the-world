@@ -1,0 +1,74 @@
+.actionButtons {
+    padding: 0.2em 0.5em .2em 18px;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.actionButtons:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.actionButtons span.ui-icon {
+    margin: 0 5px 0 0;
+    position: absolute;
+    left: .2em;
+    top: 50%;
+    margin-top: -8px;
+    zoom: 1;
+}
+
+.cell {
+    position: relative;
+    display: inline-block;
+}
+
+.buttonsContainer {
+
+}
+
+#bubbleFooter {
+    height: 10px;
+}
+
+#hide {
+    display: none;
+}
+
+.rating {
+    margin: 2px;
+    width: 110px;
+}
+
+.rating input {
+    position: absolute;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 17px;
+}
+
+.rating span {
+    width: 24px;
+    height: 16px;
+    line-height: 16px;
+    padding: 1px 22px 1px 0; /* 1px FireFox fix */
+    background: url(../resources/stars.png) no-repeat -22px 0;
+}
+
+/* Change span immediately following the checked radio */
+
+.rating input:checked + span {
+    background-position: -22px 0;
+}
+
+/* Reset all remaining stars back to default background.
+   This supersedes the above due to its ordering. */
+
+.rating input:checked + span ~ span {
+    background-position: 0 0;
+}
+    

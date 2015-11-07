@@ -1,0 +1,60 @@
+#errorWidget p {
+    line-height: 29px;
+    font-size: 1em;
+}
+
+#errorWidget {
+    position: relative;
+    z-index: 100;
+    font-size: 1em;
+}
+
+.action {
+    position: relative;
+    background: #ffffff;
+    margin-top: 28px;
+    height: 44px;
+    border-radius: 3px;
+}
+
+.action.has-success {
+    color: #ffffff;
+    background: #F1C40F;
+}
+
+.action.has-error {
+    color: #ffffff;
+    background: #e74c3c;
+
+}
+
+.message-icon {
+    width: 20px;
+    height: 20px;
+
+}
+
+.action span {
+    line-height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.has-success > .message-icon {
+    background: url("../resources/check-20.png") no-repeat;
+
+}
+
+.has-error > .message-icon {
+    background: url("../resources/error-20.png") no-repeat;
+}
+
+.message-text {
+    width: 90%;
+    text-align: center;
+}
+
+.control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
+    color: #e74c3c;
+    font-size: 12px;
+}
