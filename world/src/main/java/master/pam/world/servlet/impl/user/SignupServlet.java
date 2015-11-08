@@ -11,17 +11,17 @@ import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "SignupServlet", urlPatterns = "/SignupServlet")
 public class SignupServlet extends AbstractServerRequestServlet {
-    private static final long serialVersionUID = 7735454047270919067L;
+  private static final long serialVersionUID = 7735454047270919067L;
 
-    @Override
-    protected ServerActionsEnum getServerAction() {
-        return ServerActionsEnum.CREATE_USER;
-    }
+  @Override
+  protected ServerActionsEnum getServerAction() {
+    return ServerActionsEnum.CREATE_USER;
+  }
 
-    @Override
-    protected void buildServerRequest(IServerRequest aServerRequest) {
-        aServerRequest.addField(RequestConstants.DTO, GsonHelper.fromGson(getHttpParam(RequestConstants.USER), UserDto.class));
-        aServerRequest.addField(RequestConstants.PASSWORD, getHttpParam(RequestConstants.PASSWORD));
-    }
+  @Override
+  protected void buildServerRequest(IServerRequest aServerRequest) {
+    aServerRequest.addField(RequestConstants.DTO, GsonHelper.fromGson(getHttpParam(RequestConstants.USER), UserDto.class));
+    aServerRequest.addField(RequestConstants.PASSWORD, getHttpParam(RequestConstants.PASSWORD));
+  }
 
 }

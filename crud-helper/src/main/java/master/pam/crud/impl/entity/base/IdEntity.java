@@ -9,16 +9,16 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class IdEntity implements IIdDto {
 
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+  @javax.persistence.Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  private long id;
 
-    @Override
-    public long getId() {
-        return id;
-    }
+  @Override
+  public long getId() {
+    return id;
+  }
 
-    public void setId(long aId) {
-        this.id = aId;
-    }
+  public void setId(long aId) {
+    this.id = aId;
+  }
 }

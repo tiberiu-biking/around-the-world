@@ -3,21 +3,21 @@
 <xmlSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:noNamespaceSchemaLocation="import.xsd">
 
-    <markers>
-        <name>M1</name>
-        <note>Note1</note>
-        <latitude>1</latitude>
-        <longitude>2</longitude>
-        <date>2014-09-07</date>
-    </markers>
+  <markers>
+    <name>M1</name>
+    <note>Note1</note>
+    <latitude>1</latitude>
+    <longitude>2</longitude>
+    <date>2014-09-07</date>
+  </markers>
 
-    <markers>
-        <name>M1</name>
-        <note>Note1</note>
-        <latitude>1</latitude>
-        <longitude>2</longitude>
-        <date>2014-09-07</date>
-    </markers>
+  <markers>
+    <name>M1</name>
+    <note>Note1</note>
+    <latitude>1</latitude>
+    <longitude>2</longitude>
+    <date>2014-09-07</date>
+  </markers>
 
 
 </xmlSource>     

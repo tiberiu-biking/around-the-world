@@ -6,14 +6,21 @@ select * from markers;
 
 delete from markers;
 
-insert into markers(id, userid, note, latitude, longitude, name)
-select id, userid, note, latitude, longitude, name from markers1 where id != 390 and id != 10;
+insert into markers(id, userid, note, latitude, longitude, name) select id, userid, note, latitude, longitude, name from markers1 where id != 390 and id != 10;
 
 delete from markers where id = 4290;
 
 update markers set date = sysdate; 
 
 update markers set userid = 999998 where userid=9998;
+
+update markers set name = 'Campeni', note = 'Acasa' where id = 10;
+update markers set name = 'Sohodol', note =  'La bunici' where id = 20;
+update markers set name = 'Calan', note = 'La socri' where id = 30;
+update markers set name = 'München', note = 'La Tibi' where id = 40;
+update markers set name = 'Cervia', note = 'La Mother' where id = 50;
+
+
 
 
 select markerenti0_.id as id1_, 

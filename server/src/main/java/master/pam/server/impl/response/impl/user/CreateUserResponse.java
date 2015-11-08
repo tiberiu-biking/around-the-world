@@ -12,28 +12,28 @@ import master.pam.server.impl.response.base.envelope.IResponseEnvelope;
 
 public class CreateUserResponse extends AbstractResponse {
 
-    private IUserDao userDao = SpringContext.getBean(IUserDao.class);
-    private IUserDto newUser;
+  private IUserDao userDao = SpringContext.getBean(IUserDao.class);
+  private IUserDto newUser;
 
-    public CreateUserResponse(IServerRequest aRequest) {
-        super(aRequest);
-    }
+  public CreateUserResponse(IServerRequest aRequest) {
+    super(aRequest);
+  }
 
-    @Override
-    public void doRequest() throws RequestException {
-        IUserDto userDto = getRequest().getDto(IUserDto.class);
-        IUserDto existingUser = userDao.getUser(userDto.getEmail());
-        if (existingUser == null)
-            newUser = userDao.insertUser(userDto, getRequest().getString(RequestConstants.PASSWORD));
-    }
+  @Override
+  public void doRequest() throws RequestException {
+    IUserDto userDto = getRequest().getDto(IUserDto.class);
+    IUserDto existingUser = userDao.getUser(userDto.getEmail());
+    if (existingUser == null)
+      newUser = userDao.insertUser(userDto, getRequest().getString(RequestConstants.PASSWORD));
+  }
 
-    @Override
-    public void buildResponseEnvelope(IResponseEnvelope aResponseEnvelope) {
-        if (newUser != null)
-            aResponseEnvelope.addData(ResponseConstants.USER_ID, newUser.getId());
-        else
-            aResponseEnvelope.setErrors("Someone already has registered with this email");
+  @Override
+  public void buildResponseEnvelope(IResponseEnvelope aResponseEnvelope) {
+    if (newUser != null)
+      aResponseEnvelope.addData(ResponseConstants.USER_ID, newUser.getId());
+    else
+      aResponseEnvelope.setErrors("Someone already has registered with this email");
 
-    }
+  }
 
 }

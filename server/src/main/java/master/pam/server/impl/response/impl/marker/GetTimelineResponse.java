@@ -25,46 +25,46 @@ import java.util.List;
 
 public class GetTimelineResponse extends AbstractResponse {
 
-    private final Logger logger = LoggerFactory.getLogger(GetMarkersResponse.class);
-    private List<IMarkerDto> markers;
+  private final Logger logger = LoggerFactory.getLogger(GetMarkersResponse.class);
+  private List<IMarkerDto> markers;
 
-    private IMarkerDao markerDao = SpringContext.getBean(IMarkerDao.class);
-    private List<ITimelineItemDto> timeline;
+  private IMarkerDao markerDao = SpringContext.getBean(IMarkerDao.class);
+  private List<ITimelineItemDto> timeline;
 
-    public GetTimelineResponse(IServerRequest aRequest) {
-        super(aRequest);
+  public GetTimelineResponse(IServerRequest aRequest) {
+    super(aRequest);
+  }
+
+  @Override
+  public void doRequest() throws RequestException {
+    Long userId = getRequest().getLong(RequestConstants.USER_ID);
+    logger.debug("get markers for user = " + userId);
+
+    markers = markerDao.getMarkers(userId, null);
+
+    BeanComparator reverseDateComparator = new BeanComparator("date", new ReverseComparator(new ComparableComparator()));
+
+    Collections.sort(markers, reverseDateComparator);
+
+    Integer currentYear = null;
+    TimelineItemDto currentTimelineItem = null;
+
+    timeline = new ArrayList<ITimelineItemDto>();
+
+    for (IMarkerDto marker : markers) {
+      Integer year = DateFormatUtil.getYear(marker.getDate());
+
+      if (!year.equals(currentYear)) {
+        currentYear = year;
+        currentTimelineItem = new TimelineItemDto(currentYear);
+        timeline.add(currentTimelineItem);
+      }
+      currentTimelineItem.addMarker(new MarkerDto(marker));
     }
+  }
 
-    @Override
-    public void doRequest() throws RequestException {
-        Long userId = getRequest().getLong(RequestConstants.USER_ID);
-        logger.debug("get markers for user = " + userId);
-
-        markers = markerDao.getMarkers(userId, null);
-
-        BeanComparator reverseDateComparator = new BeanComparator("date", new ReverseComparator(new ComparableComparator()));
-
-        Collections.sort(markers, reverseDateComparator);
-
-        Integer currentYear = null;
-        TimelineItemDto currentTimelineItem = null;
-
-        timeline = new ArrayList<ITimelineItemDto>();
-
-        for (IMarkerDto marker : markers) {
-            Integer year = DateFormatUtil.getYear(marker.getDate());
-
-            if (!year.equals(currentYear)) {
-                currentYear = year;
-                currentTimelineItem = new TimelineItemDto(currentYear);
-                timeline.add(currentTimelineItem);
-            }
-            currentTimelineItem.addMarker(new MarkerDto(marker));
-        }
-    }
-
-    @Override
-    public void buildResponseEnvelope(IResponseEnvelope aEnvelope) {
-        aEnvelope.addData(ResponseConstants.TIMELINE, timeline);
-    }
+  @Override
+  public void buildResponseEnvelope(IResponseEnvelope aEnvelope) {
+    aEnvelope.addData(ResponseConstants.TIMELINE, timeline);
+  }
 }

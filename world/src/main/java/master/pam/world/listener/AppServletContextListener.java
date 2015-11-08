@@ -10,15 +10,15 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class AppServletContextListener implements ServletContextListener {
 
-    private IServer serverIf = SpringContext.getBean(IServer.class);
+  private IServer serverIf = SpringContext.getBean(IServer.class);
 
-    @Override
-    public void contextDestroyed(ServletContextEvent aServletContextEvent) {
-        serverIf.shutdown();
-    }
+  @Override
+  public void contextDestroyed(ServletContextEvent aServletContextEvent) {
+    serverIf.shutdown();
+  }
 
-    @Override
-    public void contextInitialized(ServletContextEvent aServletContextEvent) {
-        serverIf.startup();
-    }
+  @Override
+  public void contextInitialized(ServletContextEvent aServletContextEvent) {
+    serverIf.startup();
+  }
 }

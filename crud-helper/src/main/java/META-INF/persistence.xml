@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-             version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+			 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+			 version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
-    <persistence-unit name="H2PU" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+	<persistence-unit name="H2PU" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-        <properties>
-            <!-- jpa configuration -->
-            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <!-- <property name="javax.persistence.jdbc.url" value="jdbc:h2:db/master-pam;AUTO_SERVER=TRUE"
-                /> -->
-            <property name="javax.persistence.jdbc.url"
-                      value="jdbc:h2:/Users/Tiberiu/Dropbox/master-pam;AUTO_SERVER=TRUE"/>
-            <property name="javax.persistence.jdbc.user" value="master-pam"/>
-            <property name="javax.persistence.jdbc.password" value="pam"/>
+		<properties>
+			<!-- jpa configuration -->
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:h2:db/master-pam;AUTO_SERVER=TRUE" 
+				/> -->
+			<property name="javax.persistence.jdbc.url"
+					  value="jdbc:h2:/Users/Tiberiu/Dropbox/master-pam;AUTO_SERVER=TRUE"/>
+			<property name="javax.persistence.jdbc.user" value="master-pam"/>
+			<property name="javax.persistence.jdbc.password" value="pam"/>
 
-            <!-- hibernate configuration -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-            <property name="hibernate.connection.shutdown" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
+			<!-- hibernate configuration -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+			<property name="hibernate.connection.shutdown" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
 
-            <property name="hibernate.connection.useUnicode" value="true"/>
-            <property name="hibernate.connection.characterEncoding"
-                      value="UTF-8"/>
-            <property name="hibernate.connection.charSet" value="UTF-8"/>
+			<property name="hibernate.connection.useUnicode" value="true"/>
+			<property name="hibernate.connection.characterEncoding"
+					  value="UTF-8"/>
+			<property name="hibernate.connection.charSet" value="UTF-8"/>
 
 
-        </properties>
+		</properties>
 
-    </persistence-unit>
+	</persistence-unit>
 
 </persistence>

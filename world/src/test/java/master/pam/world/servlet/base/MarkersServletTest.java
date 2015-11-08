@@ -13,14 +13,14 @@ import static org.junit.Assert.assertTrue;
 
 public class MarkersServletTest extends BaseServletTest {
 
-    @Test
-    public void getListOfMarkersTest() throws IOException, ServletException {
+  @Test
+  public void getListOfMarkersTest() throws IOException, ServletException {
 
-        Mockito.when(response.getWriter()).thenReturn(writer);
-        new GetMarkersServlet().doPost(request, response);
+    Mockito.when(response.getWriter()).thenReturn(writer);
+    new GetMarkersServlet().doPost(request, response);
 
-        writer.flush();
-        assertTrue(FileUtils.readFileToString(new File("markers-response.json"), "UTF-8").contains("My Expected String"));
-    }
+    writer.flush();
+    assertTrue(FileUtils.readFileToString(new File("markers-response.json"), "UTF-8").contains("My Expected String"));
+  }
 
 }

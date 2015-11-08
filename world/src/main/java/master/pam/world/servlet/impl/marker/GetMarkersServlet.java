@@ -10,22 +10,22 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet(name = "GetMarkersServlet", urlPatterns = "/GetMarkersServlet")
 public class GetMarkersServlet extends AbstractServerRequestServlet {
 
-    private static final long serialVersionUID = 1606559514981505001L;
+  private static final long serialVersionUID = 1606559514981505001L;
 
-    @Override
-    protected ServerActionsEnum getServerAction() {
-        return ServerActionsEnum.GET_MARKERS;
-    }
+  @Override
+  protected ServerActionsEnum getServerAction() {
+    return ServerActionsEnum.GET_MARKERS;
+  }
 
-    @Override
-    protected void buildServerRequest(IServerRequest aServerRequest) {
-        String userId = getHttpParam(RequestConstants.USER_ID);
-        String markerId = getHttpParam(RequestConstants.MARKER_ID);
+  @Override
+  protected void buildServerRequest(IServerRequest aServerRequest) {
+    String userId = getHttpParam(RequestConstants.USER_ID);
+    String markerId = getHttpParam(RequestConstants.MARKER_ID);
 
-        aServerRequest.addLong(RequestConstants.USER_ID, Long.parseLong(userId));
+    aServerRequest.addLong(RequestConstants.USER_ID, Long.parseLong(userId));
 
-        if (markerId != null)
-            aServerRequest.addLong(RequestConstants.MARKER_ID, Long.parseLong(markerId));
-    }
+    if (markerId != null)
+      aServerRequest.addLong(RequestConstants.MARKER_ID, Long.parseLong(markerId));
+  }
 
 }

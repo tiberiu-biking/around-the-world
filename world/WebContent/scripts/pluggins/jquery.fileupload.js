@@ -1,3 +1,4 @@
+
 (function (factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
@@ -815,7 +816,7 @@
                                         if (that._getDeferredState(nextSlot) === 'pending') {
                                             nextSlot.resolve();
                                             break;
-                                        }
+                                }
                                         nextSlot = that._slots.shift();
                                     }
                                 }

@@ -10,33 +10,33 @@ import javax.persistence.Table;
 @Table(name = "PASSWORDS")
 public class PasswordEntity extends IdEntity {
 
-    @Column(nullable = false)
-    private Long userId;
+  @Column(nullable = false)
+  private Long userId;
 
-    @Column(nullable = false)
-    private String password;
+  @Column(nullable = false)
+  private String password;
 
-    public PasswordEntity() {
-    }
+  public PasswordEntity() {
+  }
 
-    public PasswordEntity(Long aUserId, String aPassword) {
-        setUserId(aUserId);
-        setPassword(aPassword);
-    }
+  public PasswordEntity(Long aUserId, String aPassword) {
+    setUserId(aUserId);
+    setPassword(aPassword);
+  }
 
-    public Long getUserId() {
-        return userId;
-    }
+  public Long getUserId() {
+    return userId;
+  }
 
-    public void setUserId(Long aUserId) {
-        this.userId = aUserId;
-    }
+  public void setUserId(Long aUserId) {
+    this.userId = aUserId;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public String getPassword() {
+    return password;
+  }
 
-    public void setPassword(String aPassword) {
-        this.password = aPassword;
-    }
+  public void setPassword(String aPassword) {
+    this.password = aPassword;
+  }
 }

@@ -10,20 +10,20 @@ import java.util.Map;
 
 public class UserCrudTest {
 
-    public static void main(String[] args) {
-        Map<String, Object> filter = new FilterBuilder().buildFilter(FilterBuilderConstants.ID, Long.valueOf(999998)).getFilter();
+  public static void main(String[] args) {
+    Map<String, Object> filter = new FilterBuilder().buildFilter(FilterBuilderConstants.ID, Long.valueOf(999998)).getFilter();
 
-        String query = "SELECT u FROM UserEntity u WHERE u.id = :Id";
+    String query = "SELECT u FROM UserEntity u WHERE u.id = :Id";
 
-        CrudImpl.getInstance().startup();
-        List<UserEntity> resultList = CrudImpl.getInstance().selectByQuery(UserEntity.class, query, filter);
+    CrudImpl.getInstance().startup();
+    List<UserEntity> resultList = CrudImpl.getInstance().selectByQuery(UserEntity.class, query, filter);
 
-        UserEntity entity = resultList.get(0);
+    UserEntity entity = resultList.get(0);
 
-        System.out.println("Found user :" + entity);
+    System.out.println("Found user :" + entity);
 
-        CrudImpl.getInstance().shutdown();
+    CrudImpl.getInstance().shutdown();
 
-        // getCRUD().find( UserEntity.class, aDto.getId() );
-    }
+    // getCRUD().find( UserEntity.class, aDto.getId() );
+  }
 }

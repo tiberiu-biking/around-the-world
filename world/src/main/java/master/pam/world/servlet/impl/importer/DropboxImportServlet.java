@@ -21,42 +21,42 @@ import java.util.List;
 @WebServlet(name = "DropboxImportServlet", urlPatterns = "/DropboxImportServlet")
 public class DropboxImportServlet extends AbstractServerRequestServlet {
 
-    private static final long serialVersionUID = -7904700628451273567L;
+  private static final long serialVersionUID = -7904700628451273567L;
 
-    private IDropboxSource dropboxAPI = SpringContext.getBean(IDropboxSource.class);
+  private IDropboxSource dropboxAPI = SpringContext.getBean(IDropboxSource.class);
 
-    @Override
-    protected ServerActionsEnum getServerAction() {
-        return ServerActionsEnum.ADD_MARKERS;
+  @Override
+  protected ServerActionsEnum getServerAction() {
+    return ServerActionsEnum.ADD_MARKERS;
+  }
+
+  @Override
+  public void doGet(HttpServletRequest aRequest, HttpServletResponse aResponse) throws ServletException, IOException {
+    doPost(aRequest, aResponse);
+  }
+
+  @Override
+  protected void buildServerRequest(IServerRequest aServerRequest) {
+    String code = getHttpParam(RequestConstants.CODE);
+    String[] files = GsonHelper.fromGson(getHttpParam(RequestConstants.FILES), String[].class);
+
+    List<String> paths = new ArrayList<String>();
+
+    for (String file : files) {
+      String[] splited = StringUtils.split(file, "/");
+      StringBuilder pathBuilder = new StringBuilder();
+      for (int i = 5; i < splited.length; i++)
+        pathBuilder.append("/").append(splited[i]);
+      paths.add(pathBuilder.toString());
     }
 
-    @Override
-    public void doGet(HttpServletRequest aRequest, HttpServletResponse aResponse) throws ServletException, IOException {
-        doPost(aRequest, aResponse);
+    long userId = Long.parseLong(getHttpParam(RequestConstants.USER_ID));
+
+    try {
+      aServerRequest.addField(RequestConstants.DTO_LIST, dropboxAPI.getMarkers(code, paths, userId));
+    } catch (DbxException e) {
+      // TODO
+      e.printStackTrace();
     }
-
-    @Override
-    protected void buildServerRequest(IServerRequest aServerRequest) {
-        String code = getHttpParam(RequestConstants.CODE);
-        String[] files = GsonHelper.fromGson(getHttpParam(RequestConstants.FILES), String[].class);
-
-        List<String> paths = new ArrayList<String>();
-
-        for (String file : files) {
-            String[] splited = StringUtils.split(file, "/");
-            StringBuilder pathBuilder = new StringBuilder();
-            for (int i = 5; i < splited.length; i++)
-                pathBuilder.append("/").append(splited[i]);
-            paths.add(pathBuilder.toString());
-        }
-
-        long userId = Long.parseLong(getHttpParam(RequestConstants.USER_ID));
-
-        try {
-            aServerRequest.addField(RequestConstants.DTO_LIST, dropboxAPI.getMarkers(code, paths, userId));
-        } catch (DbxException e) {
-            // TODO
-            e.printStackTrace();
-        }
-    }
+  }
 }

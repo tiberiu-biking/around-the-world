@@ -14,28 +14,28 @@ import org.slf4j.LoggerFactory;
 
 public class GetUserByFoursquareIdResponse extends AbstractResponse {
 
-    private final Logger logger = LoggerFactory.getLogger(GetUserByFoursquareIdResponse.class);
+  private final Logger logger = LoggerFactory.getLogger(GetUserByFoursquareIdResponse.class);
 
-    private IUserDto user;
+  private IUserDto user;
 
-    private IUserDao userDao = SpringContext.getBean(IUserDao.class);
+  private IUserDao userDao = SpringContext.getBean(IUserDao.class);
 
-    public GetUserByFoursquareIdResponse(IServerRequest aRequest) {
-        super(aRequest);
-    }
+  public GetUserByFoursquareIdResponse(IServerRequest aRequest) {
+    super(aRequest);
+  }
 
-    @Override
-    public void doRequest() throws RequestException {
-        String userFoursquareId = getRequest().getString(RequestConstants.USER_FOURSQUARE_ID);
-        logger.debug("Get infor for user with foursquare id: " + userFoursquareId);
+  @Override
+  public void doRequest() throws RequestException {
+    String userFoursquareId = getRequest().getString(RequestConstants.USER_FOURSQUARE_ID);
+    logger.debug("Get infor for user with foursquare id: " + userFoursquareId);
 
-        user = userDao.getUserByFoursquareId(userFoursquareId);
-        logger.debug("User found: " + user);
-    }
+    user = userDao.getUserByFoursquareId(userFoursquareId);
+    logger.debug("User found: " + user);
+  }
 
-    @Override
-    public void buildResponseEnvelope(IResponseEnvelope aEnvelope) {
-        aEnvelope.addData(ResponseConstants.USER, user);
-    }
+  @Override
+  public void buildResponseEnvelope(IResponseEnvelope aEnvelope) {
+    aEnvelope.addData(ResponseConstants.USER, user);
+  }
 
 }

@@ -10,19 +10,19 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet(name = "GetTimelineServlet", urlPatterns = "/GetTimelineServlet")
 public class GetTimelineServlet extends AbstractServerRequestServlet {
 
-    private static final long serialVersionUID = 3864994239541922490L;
+  private static final long serialVersionUID = 3864994239541922490L;
 
-    @Override
-    protected ServerActionsEnum getServerAction() {
-        return ServerActionsEnum.GET_TIMELINE;
-    }
+  @Override
+  protected ServerActionsEnum getServerAction() {
+    return ServerActionsEnum.GET_TIMELINE;
+  }
 
-    @Override
-    protected void buildServerRequest(IServerRequest aServerRequest) {
-        String userId = getHttpParam(RequestConstants.USER_ID);
+  @Override
+  protected void buildServerRequest(IServerRequest aServerRequest) {
+    String userId = getHttpParam(RequestConstants.USER_ID);
 
-        aServerRequest.addLong(RequestConstants.USER_ID, Long.parseLong(userId));
+    aServerRequest.addLong(RequestConstants.USER_ID, Long.parseLong(userId));
 
-    }
+  }
 
 }

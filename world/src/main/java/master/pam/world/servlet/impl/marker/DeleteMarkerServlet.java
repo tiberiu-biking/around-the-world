@@ -9,15 +9,15 @@ import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "DeleteMarkerServlet", urlPatterns = "/DeleteMarkerServlet")
 public class DeleteMarkerServlet extends AbstractServerRequestServlet {
-    private static final long serialVersionUID = 7735454047270919067L;
+  private static final long serialVersionUID = 7735454047270919067L;
 
-    @Override
-    protected ServerActionsEnum getServerAction() {
-        return ServerActionsEnum.DELETE_MARKER;
-    }
+  @Override
+  protected ServerActionsEnum getServerAction() {
+    return ServerActionsEnum.DELETE_MARKER;
+  }
 
-    @Override
-    protected void buildServerRequest(IServerRequest aServerRequest) {
-        aServerRequest.addLong(RequestConstants.MARKER_ID, Long.parseLong(getHttpParam(RequestConstants.MARKER_ID)));
-    }
+  @Override
+  protected void buildServerRequest(IServerRequest aServerRequest) {
+    aServerRequest.addLong(RequestConstants.MARKER_ID, Long.parseLong(getHttpParam(RequestConstants.MARKER_ID)));
+  }
 }

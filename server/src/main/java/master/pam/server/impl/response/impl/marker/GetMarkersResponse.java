@@ -17,29 +17,29 @@ import java.util.List;
 
 public class GetMarkersResponse extends AbstractResponse {
 
-    private final Logger logger = LoggerFactory.getLogger(GetMarkersResponse.class);
-    private List<IMarkerDto> markers;
+  private final Logger logger = LoggerFactory.getLogger(GetMarkersResponse.class);
+  private List<IMarkerDto> markers;
 
-    private IMarkerDao markerDao = SpringContext.getBean(IMarkerDao.class);
+  private IMarkerDao markerDao = SpringContext.getBean(IMarkerDao.class);
 
-    public GetMarkersResponse(IServerRequest aRequest) {
-        super(aRequest);
-    }
+  public GetMarkersResponse(IServerRequest aRequest) {
+    super(aRequest);
+  }
 
-    @Override
-    public void doRequest() throws RequestException {
+  @Override
+  public void doRequest() throws RequestException {
 
-        Long userId = getRequest().getLong(RequestConstants.USER_ID);
-        Long markerId = getRequest().getLong(RequestConstants.MARKER_ID);
+    Long userId = getRequest().getLong(RequestConstants.USER_ID);
+    Long markerId = getRequest().getLong(RequestConstants.MARKER_ID);
 
-        logger.debug("get markers for user = " + userId + ", marker = " + markerId);
+    logger.debug("get markers for user = " + userId + ", marker = " + markerId);
 
-        markers = markerDao.getMarkers(userId, markerId);
-    }
+    markers = markerDao.getMarkers(userId, markerId);
+  }
 
-    @Override
-    public void buildResponseEnvelope(IResponseEnvelope aEnvelope) {
-        aEnvelope.addData(ResponseConstants.MARKERS, markers).addData(ResponseConstants.CENTER_POINT,
-                ServerUtil.calculateCenterPoint(markers));
-    }
+  @Override
+  public void buildResponseEnvelope(IResponseEnvelope aEnvelope) {
+    aEnvelope.addData(ResponseConstants.MARKERS, markers).addData(ResponseConstants.CENTER_POINT,
+            ServerUtil.calculateCenterPoint(markers));
+  }
 }

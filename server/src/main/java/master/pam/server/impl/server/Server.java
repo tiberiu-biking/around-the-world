@@ -11,27 +11,27 @@ import org.slf4j.LoggerFactory;
 
 class Server implements IServer {
 
-    private final Logger log = LoggerFactory.getLogger(Server.class);
+  private final Logger log = LoggerFactory.getLogger(Server.class);
 
-    @Override
-    public IServerRequest createRequest() {
-        return new ServerRequest();
-    }
+  @Override
+  public IServerRequest createRequest() {
+    return new ServerRequest();
+  }
 
-    @Override
-    public IResponseEnvelope sendRequest(IServerRequest aServerRequest) {
-        log.debug("Send request: " + aServerRequest);
-        return RequestFactory.createResult(aServerRequest);
+  @Override
+  public IResponseEnvelope sendRequest(IServerRequest aServerRequest) {
+    log.debug("Send request: " + aServerRequest);
+    return RequestFactory.createResult(aServerRequest);
 
-    }
+  }
 
-    @Override
-    public void startup() {
-        CrudImpl.getInstance().startup();
-    }
+  @Override
+  public void startup() {
+    CrudImpl.getInstance().startup();
+  }
 
-    @Override
-    public void shutdown() {
-        CrudImpl.getInstance().shutdown();
-    }
+  @Override
+  public void shutdown() {
+    CrudImpl.getInstance().shutdown();
+  }
 }

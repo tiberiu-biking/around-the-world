@@ -76,9 +76,9 @@ public class UploadPictureServlet extends AbstractServerRequestServlet {
                 } catch (IOException | ImageProcessingException e) {
                     logger.error("FileUploadServlet: cannot get location from picture!", e);
                     isGPSMissing = true;
-                }
-            }
         }
+            }
+    }
         aServerRequest.addField(RequestConstants.DTO_LIST, markers);
 
     }
@@ -87,7 +87,7 @@ public class UploadPictureServlet extends AbstractServerRequestServlet {
     protected String buildResult(IResponseEnvelope aResponseEnvelope) {
         if (isGPSMissing) {
             aResponseEnvelope.addDataMessage("Picture(s) doesn't contain GPS information.");
-        }
+    }
 
         return super.buildResult(aResponseEnvelope);
     }

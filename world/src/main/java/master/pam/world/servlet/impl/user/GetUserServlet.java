@@ -10,16 +10,16 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet(name = "GetUserServlet", urlPatterns = "/GetUserServlet")
 public class GetUserServlet extends AbstractServerRequestServlet {
 
-    private static final long serialVersionUID = 7735454047270919067L;
+  private static final long serialVersionUID = 7735454047270919067L;
 
-    @Override
-    protected ServerActionsEnum getServerAction() {
-        return ServerActionsEnum.GET_USER_INFO;
-    }
+  @Override
+  protected ServerActionsEnum getServerAction() {
+    return ServerActionsEnum.GET_USER_INFO;
+  }
 
-    @Override
-    protected void buildServerRequest(IServerRequest aServerRequest) {
-        aServerRequest.addField(RequestConstants.USER_ID, Long.parseLong(getHttpParam(RequestConstants.USER_ID)));
-    }
+  @Override
+  protected void buildServerRequest(IServerRequest aServerRequest) {
+    aServerRequest.addField(RequestConstants.USER_ID, Long.parseLong(getHttpParam(RequestConstants.USER_ID)));
+  }
 
 }

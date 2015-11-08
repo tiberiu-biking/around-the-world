@@ -19,61 +19,61 @@ import java.util.List;
 @WebServlet(name = "FoursquareImportServlet", urlPatterns = "/FoursquareImportServlet")
 public class FoursquareImportServlet extends AbstractServerRequestServlet {
 
-    private static final long serialVersionUID = -7904700628455673567L;
+  private static final long serialVersionUID = -7904700628455673567L;
 
-    private IFoursquareSource foursquareAPI = SpringContext.getBean(IFoursquareSource.class);
+  private IFoursquareSource foursquareAPI = SpringContext.getBean(IFoursquareSource.class);
 
-    @Override
-    protected ServerActionsEnum getServerAction() {
-        return ServerActionsEnum.ADD_MARKERS;
+  @Override
+  protected ServerActionsEnum getServerAction() {
+    return ServerActionsEnum.ADD_MARKERS;
+  }
+
+  @Override
+  protected void buildServerRequest(IServerRequest aServerRequest) {
+    String token = getHttpParam(RequestConstants.CODE);
+
+    IResponseEnvelope requestUserResponse = getServer().sendRequest(builGetUserInfoRequest());
+    IUserDto userDto = requestUserResponse.getData(ResponseConstants.USER, IUserDto.class);
+
+    if (userDto.getFoursquareToken() == null) {
+      userDto.setFoursquareToken(token);
+      try {
+        userDto.setFoursquareId(foursquareAPI.getUserId(token));
+      } catch (Exception exception) {
+        // TODO
+        exception.printStackTrace();
+      }
+
+      getServer().sendRequest(builSaveUserInfoRequest(userDto));
     }
 
-    @Override
-    protected void buildServerRequest(IServerRequest aServerRequest) {
-        String token = getHttpParam(RequestConstants.CODE);
+    try {
+      Long userId = Long.parseLong(getHttpParam(RequestConstants.USER_ID));
 
-        IResponseEnvelope requestUserResponse = getServer().sendRequest(builGetUserInfoRequest());
-        IUserDto userDto = requestUserResponse.getData(ResponseConstants.USER, IUserDto.class);
+      List<IMarkerDto> foursquareMarkers = foursquareAPI.getMarkers(token, userId);
 
-        if (userDto.getFoursquareToken() == null) {
-            userDto.setFoursquareToken(token);
-            try {
-                userDto.setFoursquareId(foursquareAPI.getUserId(token));
-            } catch (Exception exception) {
-                // TODO
-                exception.printStackTrace();
-            }
+      aServerRequest.addField(RequestConstants.DTO_LIST, foursquareMarkers);
 
-            getServer().sendRequest(builSaveUserInfoRequest(userDto));
-        }
-
-        try {
-            Long userId = Long.parseLong(getHttpParam(RequestConstants.USER_ID));
-
-            List<IMarkerDto> foursquareMarkers = foursquareAPI.getMarkers(token, userId);
-
-            aServerRequest.addField(RequestConstants.DTO_LIST, foursquareMarkers);
-
-        } catch (FoursquareApiException e) {
-            e.printStackTrace();
-        }
-
-        aServerRequest.addField(RequestConstants.RETURN_TYPE, ResponseType.RETURN_ALL);
-        aServerRequest.addField(RequestConstants.USER_ID, Long.parseLong(getHttpParam(RequestConstants.USER_ID)));
+    } catch (FoursquareApiException e) {
+      e.printStackTrace();
     }
 
-    private IServerRequest builGetUserInfoRequest() {
-        IServerRequest codeRequest = getServer().createRequest();
-        codeRequest.setAction(ServerActionsEnum.GET_USER_INFO);
-        codeRequest.addField(RequestConstants.USER_ID, Long.parseLong(getHttpParam(RequestConstants.USER_ID)));
-        return codeRequest;
-    }
+    aServerRequest.addField(RequestConstants.RETURN_TYPE, ResponseType.RETURN_ALL);
+    aServerRequest.addField(RequestConstants.USER_ID, Long.parseLong(getHttpParam(RequestConstants.USER_ID)));
+  }
 
-    private IServerRequest builSaveUserInfoRequest(IUserDto aUserDto) {
-        IServerRequest codeRequest = getServer().createRequest();
-        codeRequest.setAction(ServerActionsEnum.UPDATE_USER);
-        codeRequest.addField(RequestConstants.DTO, aUserDto);
-        return codeRequest;
-    }
+  private IServerRequest builGetUserInfoRequest() {
+    IServerRequest codeRequest = getServer().createRequest();
+    codeRequest.setAction(ServerActionsEnum.GET_USER_INFO);
+    codeRequest.addField(RequestConstants.USER_ID, Long.parseLong(getHttpParam(RequestConstants.USER_ID)));
+    return codeRequest;
+  }
+
+  private IServerRequest builSaveUserInfoRequest(IUserDto aUserDto) {
+    IServerRequest codeRequest = getServer().createRequest();
+    codeRequest.setAction(ServerActionsEnum.UPDATE_USER);
+    codeRequest.addField(RequestConstants.DTO, aUserDto);
+    return codeRequest;
+  }
 
 }

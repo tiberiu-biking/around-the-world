@@ -1,38 +1,38 @@
 <xs:schema attributeFormDefault="unqualified"
            elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:element name="name" type="xs:string"/>
-    <xs:element name="note" type="xs:string"/>
-    <xs:element name="latitude" type="xs:decimal"/>
-    <xs:element name="longitude" type="xs:decimal"/>
-    <xs:element name="date" type="xs:date"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="note" type="xs:string"/>
+  <xs:element name="latitude" type="xs:decimal"/>
+  <xs:element name="longitude" type="xs:decimal"/>
+  <xs:element name="date" type="xs:date"/>
 
-    <xs:complexType name="MarkerType">
-        <xs:sequence>
-            <xs:element ref="name"/>
-            <xs:element ref="note"/>
-            <xs:element ref="latitude"/>
-            <xs:element ref="longitude"/>
-            <xs:element ref="date"/>
-        </xs:sequence>
+  <xs:complexType name="MarkerType">
+    <xs:sequence>
+      <xs:element ref="name"/>
+      <xs:element ref="note"/>
+      <xs:element ref="latitude"/>
+      <xs:element ref="longitude"/>
+      <xs:element ref="date"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="markers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="MarkerType" name="marker"/>
+      </xs:sequence>
     </xs:complexType>
-
-    <xs:element name="markers">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element type="MarkerType" name="marker"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+  </xs:element>
 
 
-    <xs:element name="source">
-        <xs:complexType>
-            <xs:sequence>
+  <xs:element name="source">
+    <xs:complexType>
+      <xs:sequence>
 
-                <xs:element ref="markers"/>
+        <xs:element ref="markers"/>
 
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

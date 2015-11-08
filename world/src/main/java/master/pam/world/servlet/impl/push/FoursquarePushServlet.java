@@ -19,48 +19,48 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet(name = "FoursquarePushServlet", urlPatterns = "/FoursquarePushServlet")
 public class FoursquarePushServlet extends AbstractServerRequestServlet {
 
-    private static final long serialVersionUID = 4052291386604876551L;
+  private static final long serialVersionUID = 4052291386604876551L;
 
-    @Override
-    protected ServerActionsEnum getServerAction() {
-        return ServerActionsEnum.ADD_MARKERS;
+  @Override
+  protected ServerActionsEnum getServerAction() {
+    return ServerActionsEnum.ADD_MARKERS;
+  }
+
+  @Override
+  protected void buildServerRequest(IServerRequest aServerRequest) throws WrongRequestException {
+    String checkinGson = getHttpParam(RequestConstants.FOURSQUARE_CHECKIN);
+
+    logger.debug("Recieved Foursquare push notification: " + checkinGson);
+
+    Checkin checkin = GsonHelper.fromGson(checkinGson, Checkin.class);
+
+    IServerRequest userRequest = builGetUserInfoRequest(checkin.getUser().getId());
+    IResponseEnvelope requestUserResponse = getServer().sendRequest(userRequest);
+    IUserDto userDto = requestUserResponse.getData(ResponseConstants.USER, IUserDto.class);
+
+    if (userDto != null) {
+      IMarkerDto markerDto = FoursquareUtil.checkinToMarker(checkin, userDto.getId());
+      aServerRequest.addField(RequestConstants.DTO, markerDto);
     }
+  }
 
-    @Override
-    protected void buildServerRequest(IServerRequest aServerRequest) throws WrongRequestException {
-        String checkinGson = getHttpParam(RequestConstants.FOURSQUARE_CHECKIN);
+  @Override
+  protected String buildResult(IResponseEnvelope aResponseEnvelope) {
+    String newMarkers = super.buildResult(aResponseEnvelope);
 
-        logger.debug("Recieved Foursquare push notification: " + checkinGson);
+    logger.debug("Add notification to the pool: " + newMarkers);
 
-        Checkin checkin = GsonHelper.fromGson(checkinGson, Checkin.class);
+    NotificationPool.getPool().addNotification(newMarkers);
 
-        IServerRequest userRequest = builGetUserInfoRequest(checkin.getUser().getId());
-        IResponseEnvelope requestUserResponse = getServer().sendRequest(userRequest);
-        IUserDto userDto = requestUserResponse.getData(ResponseConstants.USER, IUserDto.class);
+    return "";
+  }
 
-        if (userDto != null) {
-            IMarkerDto markerDto = FoursquareUtil.checkinToMarker(checkin, userDto.getId());
-            aServerRequest.addField(RequestConstants.DTO, markerDto);
-        }
-    }
-
-    @Override
-    protected String buildResult(IResponseEnvelope aResponseEnvelope) {
-        String newMarkers = super.buildResult(aResponseEnvelope);
-
-        logger.debug("Add notification to the pool: " + newMarkers);
-
-        NotificationPool.getPool().addNotification(newMarkers);
-
-        return "";
-    }
-
-    private IServerRequest builGetUserInfoRequest(String aFoursquareUserId) {
-        IServerRequest userRequest = getServer().createRequest();
-        userRequest.setAction(ServerActionsEnum.GET_USER_INFO_BY_FOURSQUAREID);
-        userRequest.addField(RequestConstants.USER_FOURSQUARE_ID, aFoursquareUserId);
-        return userRequest;
-    }
+  private IServerRequest builGetUserInfoRequest(String aFoursquareUserId) {
+    IServerRequest userRequest = getServer().createRequest();
+    userRequest.setAction(ServerActionsEnum.GET_USER_INFO_BY_FOURSQUAREID);
+    userRequest.addField(RequestConstants.USER_FOURSQUARE_ID, aFoursquareUserId);
+    return userRequest;
+  }
 
 
 }

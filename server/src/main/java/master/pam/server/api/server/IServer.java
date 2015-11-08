@@ -5,12 +5,12 @@ import master.pam.server.impl.response.base.envelope.IResponseEnvelope;
 
 public interface IServer {
 
-    IServerRequest createRequest();
+  IServerRequest createRequest();
 
-    IResponseEnvelope sendRequest(IServerRequest serverRequest);
+  IResponseEnvelope sendRequest(IServerRequest serverRequest);
 
-    void startup();
+  void startup();
 
-    void shutdown();
+  void shutdown();
 
 }

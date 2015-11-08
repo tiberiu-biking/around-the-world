@@ -6,7 +6,7 @@ import master.pam.crosscutting.geo.GeoPoint;
 import java.math.BigDecimal;
 
 public interface IGeoCodingAPI {
-    IAddressDto getAddress(BigDecimal aLatitude, BigDecimal aLongitude);
+  IAddressDto getAddress(BigDecimal aLatitude, BigDecimal aLongitude);
 
-    IAddressDto getAddress(GeoPoint aGeoPoint);
+  IAddressDto getAddress(GeoPoint aGeoPoint);
 }

@@ -11,20 +11,20 @@ import master.pam.server.impl.response.base.envelope.IResponseEnvelope;
 
 public class UpdateMarkerResponse extends AbstractResponse {
 
-    private IMarkerDao markerDao = SpringContext.getBean(IMarkerDao.class);
+  private IMarkerDao markerDao = SpringContext.getBean(IMarkerDao.class);
 
-    public UpdateMarkerResponse(IServerRequest aRequest) {
-        super(aRequest);
-    }
+  public UpdateMarkerResponse(IServerRequest aRequest) {
+    super(aRequest);
+  }
 
-    @Override
-    public void doRequest() throws RequestException {
-        markerDao.update(getRequest().getDto(IMarkerDto.class));
-    }
+  @Override
+  public void doRequest() throws RequestException {
+    markerDao.update(getRequest().getDto(IMarkerDto.class));
+  }
 
-    @Override
-    public void buildResponseEnvelope(IResponseEnvelope aResponseEnvelope) {
-        aResponseEnvelope.addData(ResponseConstants.MESSAGE, "Update successful!");
-    }
+  @Override
+  public void buildResponseEnvelope(IResponseEnvelope aResponseEnvelope) {
+    aResponseEnvelope.addData(ResponseConstants.MESSAGE, "Update successful!");
+  }
 
 }

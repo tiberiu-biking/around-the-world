@@ -14,28 +14,28 @@ import org.slf4j.LoggerFactory;
 
 public class GetUserResponse extends AbstractResponse {
 
-    private final Logger logger = LoggerFactory.getLogger(GetUserResponse.class);
+  private final Logger logger = LoggerFactory.getLogger(GetUserResponse.class);
 
-    private IUserDto user;
+  private IUserDto user;
 
-    private IUserDao userDao = SpringContext.getBean(IUserDao.class);
+  private IUserDao userDao = SpringContext.getBean(IUserDao.class);
 
-    public GetUserResponse(IServerRequest aRequest) {
-        super(aRequest);
-    }
+  public GetUserResponse(IServerRequest aRequest) {
+    super(aRequest);
+  }
 
-    @Override
-    public void doRequest() throws RequestException {
-        long userId = getRequest().getLong(RequestConstants.USER_ID);
-        logger.debug("Get infor for user: " + userId);
+  @Override
+  public void doRequest() throws RequestException {
+    long userId = getRequest().getLong(RequestConstants.USER_ID);
+    logger.debug("Get infor for user: " + userId);
 
-        user = userDao.getUser(userId);
-        logger.debug("User found: " + user);
-    }
+    user = userDao.getUser(userId);
+    logger.debug("User found: " + user);
+  }
 
-    @Override
-    public void buildResponseEnvelope(IResponseEnvelope aEnvelope) {
-        aEnvelope.addData(ResponseConstants.USER, user);
-    }
+  @Override
+  public void buildResponseEnvelope(IResponseEnvelope aEnvelope) {
+    aEnvelope.addData(ResponseConstants.USER, user);
+  }
 
 }

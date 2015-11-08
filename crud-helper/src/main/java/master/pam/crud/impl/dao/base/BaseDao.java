@@ -5,8 +5,8 @@ import master.pam.crud.impl.iface.ICrud;
 
 public class BaseDao {
 
-    protected static ICrud getCRUD() {
-        return CrudImpl.getInstance();
-    }
+  protected static ICrud getCRUD() {
+    return CrudImpl.getInstance();
+  }
 
 }

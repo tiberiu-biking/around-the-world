@@ -7,20 +7,20 @@ import master.pam.server.impl.response.base.envelope.IResponseEnvelope;
 
 public class ErrorServerResponse extends AbstractResponse {
 
-    private RequestException error;
+  private RequestException error;
 
-    public ErrorServerResponse(IServerRequest aRequest, RequestException aException) {
-        super(aRequest);
-        error = aException;
-    }
+  public ErrorServerResponse(IServerRequest aRequest, RequestException aException) {
+    super(aRequest);
+    error = aException;
+  }
 
-    @Override
-    public void doRequest() {
-    }
+  @Override
+  public void doRequest() {
+  }
 
-    @Override
-    public void buildResponseEnvelope(IResponseEnvelope aResponseEnvelope) {
-        aResponseEnvelope.setError(error);
-    }
+  @Override
+  public void buildResponseEnvelope(IResponseEnvelope aResponseEnvelope) {
+    aResponseEnvelope.setError(error);
+  }
 
 }

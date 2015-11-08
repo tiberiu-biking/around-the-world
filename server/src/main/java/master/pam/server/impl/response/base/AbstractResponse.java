@@ -8,34 +8,34 @@ import master.pam.server.impl.response.base.envelope.ResponseEnvelope;
 
 public abstract class AbstractResponse implements IServerResponse {
 
-    public abstract void doRequest() throws RequestException;
+  public abstract void doRequest() throws RequestException;
 
-    public abstract void buildResponseEnvelope(IResponseEnvelope aResponseEnvelope);
+  public abstract void buildResponseEnvelope(IResponseEnvelope aResponseEnvelope);
 
-    /**
-     * The request for which the response envelope is sent.
-     */
-    private IServerRequest request;
-    private ResponseEnvelope responseEnvelope;
+  /**
+   * The request for which the response envelope is sent.
+   */
+  private IServerRequest request;
+  private ResponseEnvelope responseEnvelope;
 
-    public AbstractResponse(IServerRequest aRequest) {
-        super();
-        request = aRequest;
-    }
+  public AbstractResponse(IServerRequest aRequest) {
+    super();
+    request = aRequest;
+  }
 
-    public IResponseEnvelope getResponse() throws RequestException {
-        doRequest();
-        buildResponseEnvelope(getEnvelope());
-        return getEnvelope();
-    }
+  public IResponseEnvelope getResponse() throws RequestException {
+    doRequest();
+    buildResponseEnvelope(getEnvelope());
+    return getEnvelope();
+  }
 
-    public IServerRequest getRequest() {
-        return request;
-    }
+  public IServerRequest getRequest() {
+    return request;
+  }
 
-    protected IResponseEnvelope getEnvelope() {
-        if (responseEnvelope == null)
-            responseEnvelope = new ResponseEnvelope();
-        return responseEnvelope;
-    }
+  protected IResponseEnvelope getEnvelope() {
+    if (responseEnvelope == null)
+      responseEnvelope = new ResponseEnvelope();
+    return responseEnvelope;
+  }
 }

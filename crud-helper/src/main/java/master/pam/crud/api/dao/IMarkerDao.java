@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface IMarkerDao {
 
-    IMarkerDto update(IMarkerDto aDto);
+  IMarkerDto update(IMarkerDto aDto);
 
-    void delete(long aId);
+  void delete(long aId);
 
-    IMarkerDto create(IMarkerDto aDto);
+  IMarkerDto create(IMarkerDto aDto);
 
-    List<IMarkerDto> getMarkers(Long aUserId, Long aMarkerId);
+  List<IMarkerDto> getMarkers(Long aUserId, Long aMarkerId);
 
-    IMarkerDto getByExternalId(String aExternalId, Long aUserId);
+  IMarkerDto getByExternalId(String aExternalId, Long aUserId);
 
 }
